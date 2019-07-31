@@ -43,9 +43,12 @@ export default {
               includeRating: true
             });
           }
-
-          if (enabled && creating) {
+          //if (enabled && creating) {
+          if (enabled) {
             this.set('includeRating', true);
+          }
+          if (creating) {
+            this.set('includeRating', false);
           }
         },
 
@@ -57,8 +60,8 @@ export default {
         @computed('ratingEnabled', 'hideRating', 'topic', 'post')
         showRating(enabled, hide, topic, post) {
           if (hide) return false;
-
-          if ((post && post.get('firstPost') && topic.rating_enabled) || !topic) {
+          //if ((post && post.get('firstPost') && topic.rating_enabled) || !topic) {
+          if ((post  && topic.rating_enabled) || !topic) {
             return enabled;
           }
 
